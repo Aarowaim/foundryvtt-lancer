@@ -47,6 +47,57 @@ export function renderCompactTag(tagShort: TagDataShort): string {
   return template;
 }
 
+/**
+ * Web Components HTML tag
+*/
+export class CompactTag extends HTMLElement {
+  constructor() {
+    super();
+
+    let shadowRoot = this.attachShadow({mode: 'open'});
+    shadowRoot.innerHTML = `<style>
+      div {
+        display: flex;
+        flex-flow: row wrap;
+
+        font-size: 12px;
+        color: white;
+        background-color: #991e2a;
+
+        max-width: fit-content;
+        min-width: fit-content;
+        align-items: center;
+
+        border-radius: 5px;
+        padding: 0px 5px;
+        margin: 3px 5px;
+        border: 2px;
+      }
+
+      span {
+        margin: 3px;
+      }
+    </style>
+    <div>
+      <!-- Shadow elements don't have direct access to fonts through classes -->
+      <i class="mdi mdi-label i--s i--light"></i>
+      <span>Message</span>
+    </div>`;
+  }
+
+  get hidden() {
+    return this.hasAttribute('hidden');
+  }
+
+  set hidden(val) {
+    if (val) {
+      this.setAttribute('hidden', '');
+    } else {
+      this.removeAttribute('hidden');
+    }
+  }
+}
+
 export function renderChunkyTag(tagShort: TagDataShort): string {
   let template: string = "";
   let tag: TagData = findTag(tagShort.id);

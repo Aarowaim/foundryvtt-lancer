@@ -20,7 +20,7 @@ import { LancerItemSheet } from './module/item/item-sheet';
 // Import helpers
 import { preloadTemplates } from './module/preloadTemplates'
 import { registerSettings } from './module/settings'
-import { renderCompactTag, renderChunkyTag } from './module/item/tags';
+import { renderCompactTag, renderChunkyTag, CompactTag} from './module/item/tags';
 import * as migrations from './module/migration.js';
 
 // Import JSON data
@@ -75,6 +75,9 @@ Hooks.once('init', async function() {
 			"frame", "mech_system", "mech_weapon"], 
 		makeDefault: true 
 	});
+
+	// Register Web Components
+	customElements.define('compact-tag', CompactTag);
 
 	// Register handlebars helpers
 
