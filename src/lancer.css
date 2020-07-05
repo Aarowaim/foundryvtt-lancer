@@ -1,13 +1,39 @@
+<!-- Settings Layer -->
+:root {
+  --colorprimary: #991e2a;
+  --color-primary-light: #d7b6b9;
+
+  --color-energy-damage: #29B6F6;
+  --color-kinetic-damage: #757575;
+  --color-explosive-damage: #FFA726;
+  --color-burn-damage: #FFA726;
+  --color-heat-damage: #FF7043;
+  --color-variable-damage: #D500F9;
+
+  --color-trigger: #991e2a;
+  --color-talent: #3a81c3;
+
+  --color-reaction: #0a7674;
+  --color-tech: #7d2477;
+  --color-system: #67bc45;
+  --color-protocol: #c75a00;
+  --color-weapon: #000000;
+}
+
+<!-- Elements Layer -->
+<!-- Objects Layer -->
+
+<!-- Components Layer -->
 .add-button {
   width: 20px;
   height: 20px;
-  background: #d7b6b9;
+  background: var(--colorprimary)-light);
   text-align: center;
-  border: solid #991e2a;
+  border: solid var(--colorprimary, red);
   border-width: 1px;
   border-radius: 4px;
   font-weight: bold;
-  color: #991e2a;
+  color: var(--colorprimary, red);
 }
 
 .remove-button {
@@ -27,8 +53,8 @@
 }
 
 .tag {
-  border: solid #991e2a;
-  border-color: #991e2a;
+  border: solid var(--colorprimary, red);
+  border-color: var(--colorprimary, red);
   border-width: 1px;
   border-radius: 5px;
   border-left-width: 7px;
@@ -77,7 +103,7 @@
 .labeled-input > span {
   text-align: center;
   color: white;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   max-height: 1.5em;
 }
 
@@ -206,7 +232,7 @@ select {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   color: white;
   padding: 10px;
 }
@@ -221,7 +247,7 @@ select {
 }
 
 .lancer-tab.active {
-  color: #991e2a;
+  color: var(--colorprimary, red);
   background-color: #f0f0f0;
 }
 
@@ -234,7 +260,7 @@ select {
 .lancer-protocol-header,
 .lancer-weapon-header {
   color: white;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   padding-left: 15px;
   padding-right: 15px;
   display: inline-block;
@@ -270,7 +296,7 @@ select {
 }
 
 .lancer-mount-header select option {
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   color: white;
 }
 
@@ -281,7 +307,7 @@ select {
   min-height: 45px;
   border-style: dashed;
   border-width: 2px;
-  border-color: #991e2a;
+  border-color: var(--colorprimary, red);
   border-top-style: none;
   white-space: pre;
 }
@@ -329,7 +355,7 @@ select {
 }
 
 .lancer-trigger-header {
-  color: #991e2a;
+  color: var(--colorprimary, red);
   background-color: white;
 }
 
@@ -370,7 +396,7 @@ select {
 
 .compact-tag {
   color: white;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   max-width: fit-content;
   min-width: fit-content;
   align-items: center;
@@ -384,7 +410,7 @@ select {
 .npc-header {
   display: grid;
   grid-template: 1.5fr 1fr 30px / 1fr 1fr 1.5fr 1fr 120px;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   margin: 10px;
   color: white;
 }
@@ -402,7 +428,7 @@ select {
 .pilot-header {
   display: grid;
   grid-template: 1.5fr 1fr 30px / 1fr 1fr 1.5fr 1fr 120px;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   margin: 10px;
   color: white;
 }
@@ -494,18 +520,15 @@ select {
 
 .lancer-title {
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin: 3px 10px;
   color: white;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
 }
 
 .lancer-stat-header {
   text-align: center;
   color: white;
-  background-color: #991e2a;
+  background-color: var(--colorprimary, red);
   max-height: 1.5em;
 }
 
