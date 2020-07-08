@@ -62,8 +62,8 @@ Hooks.once('init', async function() {
 	// Register custom system settings
 	registerSettings();
 
-    // Register Web Components
-    customElements.define('card-clipped', class LancerClippedCard extends HTMLDivElement {}, {extends: 'div'})
+  // Register Web Components
+  customElements.define('clipped-card', class LancerClippedCard extends HTMLElement {});
 
 	// Preload Handlebars templates
 	await preloadTemplates();
