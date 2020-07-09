@@ -73,7 +73,9 @@ export function renderChunkyTag(tagShort: TagDataShort): string {
         </div>
       </div>
     </div>`;
+    return template;
   }
+};
   
 /**
  * Handlebars helper to generate verbose tag template.

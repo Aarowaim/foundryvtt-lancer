@@ -62,23 +62,23 @@
     <div class="tab dossier active" data-group="primary" data-tab="dossier">
       <div style="display:grid; grid-template: 1fr 1fr 2fr 2fr / 1fr 1fr">
         <clipped-card class="flexcol" style="grid-area: 1/1/2/2">
-          <span class="lancer-stat-header major clipped-top">CALLSIGN</span>
+          <clipped-header class="major">CALLSIGN</clipped-header>
           <input class="lancer-text-input major" type="string" name="data.pilot.callsign" value="{{data.pilot.callsign}}" data-dtype="String"/>
         </clipped-card>
         <clipped-card class="flexcol" style="grid-area: 1/2/2/3">
-          <span class="lancer-stat-header major clipped-top">NAME</span>
+          <clipped-header class="major">NAME</clipped-header>
           <input class="lancer-text-input major" type="string" name="data.pilot.name" value="{{data.pilot.name}}" data-dtype="String"/>
         </clipped-card>
         <clipped-card class="flexcol" style="grid-area: 2/1/3/3">
-          <span class="lancer-stat-header major clipped-top">BACKGROUND</span>
+          <clipped-header class="major">BACKGROUND</clipped-header>
           <input class="lancer-text-input major" type="string" name="data.pilot.background" value="{{data.pilot.background}}" data-dtype="String"/>
         </clipped-card>
         <clipped-card class="flexcol" style="grid-area: 3/1/4/3">
-          <span class="lancer-stat-header major clipped-top">HISTORY</span>
+          <clipped-header class="major">HISTORY</clipped-header>
           {{editor content=data.pilot.history target="data.pilot.history" button=true owner=owner editable=editable}}
         </clipped-card>
         <clipped-card class="flexcol" style="grid-area: 4/1/5/3">
-          <span class="lancer-stat-header major clipped-top">NOTES</span>
+          <clipped-header class="major">NOTES</clipped-header>
           {{editor content=data.pilot.notes target="data.pilot.notes" button=true owner=owner editable=editable}}
         </clipped-card>
       </div>
@@ -86,45 +86,45 @@
 
     {{!-- Pilot Tactical Tab --}}
     <div class="tab pilot" data-group="primary" data-tab="pilot">
-      <div class="card clipped">
+      <clipped-card>
         <div class="flexrow">
-          <div class="flexcol card clipped">
-            <span class="lancer-stat-header major clipped-top">LICENSE LEVEL</span>
+          <clipped-card class="flexcol">
+            <clipped-header class="major">LICENSE LEVEL</clipped-header>
             <input class="lancer-stat-input major" type="number" name="data.pilot.level" value="{{data.pilot.level}}" data-dtype="Number"\>
-          </div>
-          <div class="flexcol card clipped">
-            <span class="lancer-stat-header major clipped-top">GRIT</span>
+          </clipped-card>
+          <clipped-card class="flexcol">
+            <clipped-header class="major">GRIT</clipped-header>
             <input class="lancer-stat-input major" type="number" name="data.pilot.grit" value="{{data.pilot.grit}}" data-dtype="Number"\>
-          </div>
+          </clipped-card>
         </div>
-        <div class="flexrow">
-          <div class="flexcol card clipped">
-            <span class="lancer-stat-header major clipped-top">HULL</span>
+        <clipped-card class="flexrow">
+          <clipped-card class="flexcol">
+            <clipped-header class="major">HULL</clipped-header>
             <input class="lancer-stat-input major" type="number" name="data.mech.hull" value="{{data.mech.hull}}" data-dtype="Number"/>
-          </div>
-          <div class="flexcol card clipped">
-            <span class="lancer-stat-header major clipped-top">AGILITY</span>
+          </clipped-card>
+          <clipped-card class="flexcol">
+            <clipped-header class="major">AGILITY</clipped-header>
             <input class="lancer-stat-input major" type="number" name="data.mech.agility" value="{{data.mech.agility}}" data-dtype="Number"/>
-          </div>
-          <div class="flexcol card clipped">
-            <span class="lancer-stat-header major clipped-top">SYSTEMS</span>
+          </clipped-card>
+          <clipped-card class="flexcol">
+            <clipped-header class="major">SYSTEMS</clipped-header>
             <input class="lancer-stat-input major" type="number" name="data.mech.systems" value="{{data.mech.systems}}" data-dtype="Number"/>
-          </div>
-          <div class="flexcol card clipped">
-            <span class="lancer-stat-header major clipped-top">ENGINEERING</span>
+          </clipped-card>
+          <clipped-card class="flexcol">
+            <clipped-header class="major">ENGINEERING</clipped-header>
             <input class="lancer-stat-input major" type="number" name="data.mech.engineering" value="{{data.mech.engineering}}" data-dtype="Number"/>
-          </div>
-        </div>
-      </div>
+          </clipped-card>
+        </clipped-card>
+      </clipped-card>
 
     {{!-- Pilot Loadout --}}
     <div class="flexrow">
-      <div class="card clipped">
-        <h2 class="lancer-stat-header major clipped-top">ARMOR</h2>
+      <clipped-card>
+        <clipped-header class="major">ARMOR</clipped-header>
         {{#if pilot_loadout.armor}}
         {{#each pilot_loadout.armor as |armor key|}}
-        <div class="card clipped pilot-armor-compact item" data-item-id="{{armor._id}}">
-          <div class="weapon-header clipped-top" style="grid-area: 1/1/2/3">
+        <clipped-card class="pilot-armor-compact item" data-item-id="{{armor._id}}">
+          <div class="weapon-header" style="grid-area: 1/1/2/3">
             <i class="mdi mdi-shield-outline i--m i--light"> </i>
             <span class="minor">{{armor.name}}</span>
             <a class="stats-control i--light" data-action="delete"><i class="fas fa-trash"></i></a>
@@ -151,7 +151,7 @@
               <span class="minor">{{armor.data.speed}}</span>
             </div>
           </div>
-          <div class="effect-text" style=" padding: 5px">
+          <div class="effect-text" style="padding: 5px">
             {{armor.data.description}}
           </div>
           <div class="flexrow" style="justify-content: flex-end;">
@@ -159,16 +159,16 @@
             {{{compact-tag tag}}}
             {{/each}}
           </div>
-        </div>
+        </clipped-card>
         {{/each}}
         {{/if}}
-      </div>
-      <div class="card clipped">
-        <h2 class="lancer-stat-header major clipped-top">WEAPONS</h2>
+      </clipped-card>
+      <clipped-card>
+        <clipped-header class="major">WEAPONS</clipped-header>
         {{#if pilot_loadout.weapons}}
         {{#each pilot_loadout.weapons as |weapon key|}}
-        <div class="card clipped pilot-weapon-compact item" data-item-id="{{weapon._id}}">
-          <div class="weapon-header clipped-top" style="grid-area: 1/1/2/3">
+        <clipped-card class="pilot-weapon-compact item" data-item-id="{{weapon._id}}">
+          <div class="weapon-header" style="grid-area: 1/1/2/3">
             <i class="cci cci-weapon i--m i--light"> </i>
             <span class="minor">{{weapon.name}}</span>
             <a class="stats-control i--light" data-action="delete"><i class="fas fa-trash"></i></a>
@@ -196,18 +196,18 @@
             <div class="flexrow">
             </div>
           </div>
-        </div>
+        </clipped-card>
         {{/each}}
         {{/if}}
-      </div>
+      </clipped-card>
     </div>
-    <div class="card clipped">
-      <h2 class="lancer-title clipped-top">GEAR</h2>
+    <clipped-card>
+      <clipped-header>GEAR</clipped-header>
       {{#if pilot_loadout.gear}}
       <div class="flexrow">
         {{#each pilot_loadout.gear as |gear key|}}
-        <div class="card clipped pilot-gear-compact item" data-item-id="{{gear._id}}">
-          <div class="weapon-header clipped-top" style="grid-area: 1/1/2/3">
+        <clipped-card class="pilot-gear-compact item" data-item-id="{{gear._id}}">
+          <div class="weapon-header">
             <i class="cci cci-generic-item i--m i--light"> </i>
             <span class="minor">{{gear.name}}</span>
             <a class="stats-control i--light" data-action="delete"><i class="fas fa-trash"></i></a>
@@ -223,7 +223,7 @@
             {{!-- <input class="lancer-stat-input minor" type="number" name="{{gear.name}}.data.uses" value="{{gear.data.uses}}" data-dtype="Number"/> --}}
           </div>
           {{/if}}
-          <div class="effect-text" style=" padding: 5px">
+          <div class="effect-text" style="padding: 5px">
             {{{gear.data.description}}}
           </div>
           <div class="flexrow" style="justify-content: flex-end;">
@@ -231,26 +231,26 @@
             {{{compact-tag tag}}}
             {{/each}}
           </div>
-        </div>
+        </clipped-card>
         {{/each}}
       </div>
       {{/if}}
-    </div>
+    </clipped-card>
 
     {{!-- Skill Triggers --}}
     <clipped-card>
-     <h2 class="lancer-title clipped">SKILL TRIGGERS</h2>
+     <clipped-header>SKILL TRIGGERS</clipped-header>
      {{#if skills}}
      <ul class="items-list">
        {{#each skills as |skill key|}}
        <li class="skill-compact item" data-item-id="{{skill._id}}">
-         <div class="trigger-header medium clipped-top" style="grid-area: 1/1/2/3">
+         <div class="trigger-header">
           <i class="cci cci-skill i--m i--dark"> </i>
           <span class="major">{{skill.name}}</span>
           <a class="stats-control i--dark" data-action="delete"><i class="fas fa-trash"></i></a>
         </div>
-        <div class="major" style="grid-area: 2/1/3/2; align-self: center">+{{double skill.data.rank}}</div>
-        <div class="desc-text" style="grid-area: 2/2/3/3">{{skill.data.description}}</div>
+        <div class="major">+{{double skill.data.rank}}</div>
+        <div class="desc-text">{{skill.data.description}}</div>
       </li>
       {{/each}}
     </ul>
@@ -259,12 +259,12 @@
 
   {{!-- Talents --}}
   <clipped-card>
-    <h2 class="lancer-title clipped">TALENTS</h2>
+    <clipped-header>TALENTS</clipped-header>
     {{#if talents}}
     <ul class="talents-list">
       {{#each talents as |talent key|}}
       <li class="talent-compact item" data-item-id="{{talent._id}}">
-        <div class="lancer-talent-header medium clipped-top" style="grid-area: 1/1/2/4">
+        <div class="talent-header medium" style="grid-area: 1/1/2/4">
           <i class="cci cci-talent i--m i--dark"></i>
           <span class="major">{{talent.name}}</span>
           <a class="stats-control i--dark" data-action="delete"><i class="fas fa-trash"></i></a>
@@ -290,7 +290,7 @@
 
   {{!-- Licenses --}}
   <clipped-card>
-    <h2 class="lancer-title clipped-top">LICENSES</h2>
+    <clipped-header>LICENSES</clipped-header>
     {{#each licenses as |license key|}}
     <span class="item reaction" data-item-id="{{license._id}}"><img class="thumbnail" src="{{license.img}}" data-edit="{{license.img}}" title="{{license.name}}" height="10" width="10"/> {{license.name}} <a class="stats-control" data-action="delete"><i class="fas fa-trash"></i></a></span>
     {{/each}}
@@ -298,12 +298,12 @@
 
   {{!-- Core Bonuses --}}
   <clipped-card>
-    <h2 class="lancer-title clipped-top">CORE BONUSES</h2>
+    <clipped-header>CORE BONUSES</clipped-header>
     {{#if core_bonuses}}
     <ul class="items-list">
       {{#each core_bonuses as |core_bonus key|}}
       <li class="cb-compact item" data-item-id="{{core_bonus._id}}">
-        <div class="lancer-system-header medium clipped-top" style="grid-area: 1/1/2/2">
+        <div class="system-header medium" style="grid-area: 1/1/2/2">
           <i class="cci cci-corebonus i--m i--dark"> </i>
           <span class="major">{{core_bonus.name}}</span>
           <a class="stats-control i--dark" data-action="delete"><i class="fas fa-trash"></i></a>
@@ -330,10 +330,7 @@
     </div>
     <clipped-card class="mech-stats" style="display: grid; grid-template: repeat(3, 1fr) / repeat(5, 1fr);">
       <clipped-card class="flexcol" style="grid-area: 1/1/2/2">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-structure i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">STRUCT</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-structure i--m i--light"> </i>STRUCT</clipped-header>
         <div class="flexrow" style="align-self: center;">
           <input class="lancer-stat-input major" type="number" name="data.mech.structure.value" value="{{data.mech.structure.value}}" data-dtype="Number"/>
           <span class="medium" style="max-width: min-content;" >/</span>
@@ -341,10 +338,7 @@
         </div>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 1/2/2/3">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="mdi mdi-heart-outline i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">HP</span>
-        </div>
+        <clipped-header class="flexrow"><i class="mdi mdi-heart-outline i--m i--light"> </i>HP</clipped-header>
         <div class="flexrow" style="align-self: center;">
           <input class="lancer-stat-input major" type="number" name="data.mech.hp.value" value="{{data.mech.hp.value}}" data-dtype="Number"/>
           <span class="medium" style="max-width: min-content;" >/</span>
@@ -352,10 +346,7 @@
         </div>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 1/3/2/4">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-reactor i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">STRESS</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-reactor i--m i--light"> </i>STRESS</clipped-header>
         <div class="flexrow" style="align-self: center;">
           <input class="lancer-stat-input major" type="number" name="data.mech.stress.value" value="{{data.mech.stress.value}}" data-dtype="Number"/>
           <span class="medium" style="max-width: min-content;">/</span>
@@ -363,10 +354,7 @@
         </div>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 1/4/2/5">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-heat i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">HEAT</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-heat i--m i--light"> </i>HEAT</clipped-header>
         <div class="flexrow" style="align-self: center;">
           <input class="lancer-stat-input major" type="number" name="data.mech.heat.value" value="{{data.mech.heat.value}}" data-dtype="Number"/>
           <span class="medium" style="max-width: min-content;">/</span>
@@ -374,10 +362,7 @@
         </div>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 1/5/2/6">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-repair i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">REPAIRS</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-repair i--m i--light"> </i>REPAIRS</clipped-header>
         <div class="flexrow" style="align-self: center;">
           <input class="lancer-stat-input major" type="number" name="data.mech.repairs.value" value="{{data.mech.repairs.value}}" data-dtype="Number"/>
           <span class="medium" style="max-width: min-content;">/</span>
@@ -385,70 +370,46 @@
         </div>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 2/1/3/2">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="mdi mdi-shield-outline i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">ARMOR</span>
-        </div>
+        <clipped-header class="flexrow"><i class="mdi mdi-shield-outline i--m i--light"> </i>ARMOR</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.armor" value="{{data.mech.armor}}" data-dtype="Number"/>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 2/2/3/3">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-evasion i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">EVASION</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-evasion i--m i--light"> </i>EVASION</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.evasion" value="{{data.mech.evasion}}" data-dtype="Number"/>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 2/3/3/4">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-edef i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">E-DEF</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-edef i--m i--light"> </i>E-DEF</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.edef" value="{{data.mech.edef}}" data-dtype="Number"/>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 2/4/3/5">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="mdi mdi-arrow-right-bold-hexagon-outline i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">SPEED</span>
-        </div>
+        <clipped-header class="flexrow"><i class="mdi mdi-arrow-right-bold-hexagon-outline i--m i--light"> </i>SPEED</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.speed" value="{{data.mech.speed}}" data-dtype="Number"/>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 3/1/4/2">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-reticule i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">GRIT</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-reticule i--m i--light"> </i>GRIT</clipped-header>
         <div class="medium">{{data.pilot.grit}}</div>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 3/2/4/3">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-tech-full i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">TECH ATK</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-tech-full i--m i--light"> </i>TECH ATK</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.tech_attack" value="{{data.mech.tech_attack}}" data-dtype="Number"/>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 3/3/4/4">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-sensor i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">SENSORS</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-sensor i--m i--light"> </i>SENSORS</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.sensors" value="{{data.mech.sensors}}" data-dtype="Number"/>
       </clipped-card>
       <clipped-card class="flexcol" style="grid-area: 3/4/4/5">
-        <div class="lancer-stat-header clipped-top flexrow">
-          <i class="cci cci-save i--m i--light" style="float: left; padding-left: 10px"> </i>
-          <span class="major">SAVE T.</span>
-        </div>
+        <clipped-header class="flexrow"><i class="cci cci-save i--m i--light"> </i>SAVE T.</clipped-header>
         <input class="lancer-stat-input medium" type="number" name="data.mech.save" value="{{data.mech.save}}" data-dtype="Number"/>
       </clipped-card>
       {{#if frame_size}}
-      <div style="grid-area: 2/5/4/6"><i class="cci cci-{{frame_size}} size-icon theme--main"></i></div>
+      <div style="grid-area: 2/5/4/6"><i class="cci cci-{{frame_size}} size-icon" style="color: var(--main-theme-color)"></i></div>
       {{/if}}
     </clipped-card>
     {{#if frame}}
     <ul>
       {{#each frame.data.traits as |trait key|}}
       <li class="frame-trait-compact">
-        <div class="lancer-mech-trait-header medium clipped-top" style="grid-area: 1/1/2/2">
+        <div class="trait-header medium" style="grid-area: 1/1/2/2">
           <i class="cci cci-trait i--m i--light"> </i>
           <span class="major">{{trait.name}}</span>
         </div>
@@ -466,14 +427,14 @@
       <div class="desc-text">{{{frame.data.core_system.description}}}</div>
       {{/if}}
       {{#if frame.data.core_system.passive_name}}
-      <div class="card clipped">
+      <clipped-card>
         <div class="lancer-core-sys-header medium clipped-top">
           <i class="mdi mdi-circle-expand i--m i--light"> </i>
           <div class="medium">{{frame.data.core_system.passive_name}}</div>
           <div class="medium i--faded" style="justify-self: right;"> // PASSIVE</div>
         </div>
         <div class="effect-text">{{{frame.data.core_system.passive_effect}}}</div>
-      </div>
+      </clipped-card>
       {{/if}}
       <clipped-card>
         <div class="lancer-core-sys-header medium clipped-top">
@@ -486,7 +447,7 @@
     </clipped-card>
     {{/if}}
     <clipped-card>
-      <h2 class="lancer-title clipped">MOUNTS<a class="add-button" data-action="create" style="float:right; margin-right: 1em; padding-bottom: 1em;">+</a></h2>
+      <clipped-header>MOUNTS<a class="add-button" data-action="create" style="float:right; margin-right: 1em; padding-bottom: 1em;">+</a></clipped-header>
       <div class="flexrow" style="justify-content: space-evenly;">
         {{#each data.mech_loadout.mounts as |mount key|}}
         <div class="flexcol lancer-mount-container" data-item-id="{{key}}">
@@ -511,15 +472,15 @@
 
     {{!-- Weapons --}}
     <clipped-card>
-      <h2 class="lancer-title clipped">WEAPONS</h2>
+      <clipped-header>WEAPONS</clipped-header>
       {{#each mech_loadout.weapons as |weapon key|}}
       <span class="item weapon-header" data-item-id="{{weapon._id}}"><img class="thumbnail" src="{{weapon.img}}" data-edit="{{weapon.img}}" title="{{weapon.name}}" height="10" width="10"/> {{weapon.name}} <a class="stats-control" data-action="delete"><i class="fas fa-trash"></i></a></span>
       {{/each}}
     </clipped-card>
     <clipped-card>
-      <h2 class="lancer-title clipped">SYSTEMS</h2>
+      <clipped-header>SYSTEMS</clipped-header>
       {{#each mech_loadout.systems as |system key|}}
-      <span class="item lancer-system-header" data-item-id="{{system._id}}"><img class="thumbnail" src="{{system.img}}" data-edit="{{system.img}}" title="{{system.name}}" height="10" width="10"/> {{system.name}} <a class="stats-control" data-action="delete"><i class="fas fa-trash"></i></a></span>
+      <span class="item system-header" data-item-id="{{system._id}}"><img class="thumbnail" src="{{system.img}}" data-edit="{{system.img}}" title="{{system.name}}" height="10" width="10"/> {{system.name}} <a class="stats-control" data-action="delete"><i class="fas fa-trash"></i></a></span>
       {{/each}}
     </clipped-card>
   </div>

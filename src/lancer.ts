@@ -64,6 +64,7 @@ Hooks.once('init', async function() {
 
   // Register Web Components
   customElements.define('clipped-card', class LancerClippedCard extends HTMLElement {});
+  customElements.define('clipped-header', class LancerClippedHeader extends HTMLElement {});
 
 	// Preload Handlebars templates
 	await preloadTemplates();
@@ -112,8 +113,8 @@ Hooks.once('init', async function() {
 		return str.toUpperCase();
 	});
 
-    Handlebars.registerHelper('compact-tag', renderCompactTag);
-    Handlebars.registerHelper('chunky-tag', renderChunkyTag);
+  Handlebars.registerHelper('compact-tag', renderCompactTag);
+  Handlebars.registerHelper('chunky-tag', renderChunkyTag);
 
 	Handlebars.registerHelper('full-tag', renderFullTag);
 

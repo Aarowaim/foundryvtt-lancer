@@ -16,6 +16,8 @@
   --tech-clip-path: polygon( 0 0, calc(100% - 12px) 0, calc(100% - 12px) 7px, calc(100% - 7px) 7px, calc(100% - 7px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 0, 100% 0, 100% 3px, calc(100% - 3px) 3px, calc(100% - 3px) 7px, calc(100% - 7px) 7px, calc(100% - 7px) 12px, 100% 12px, 100% 100%, 0 100% );
   --tech-color: #7d2477;
   --protocol-color: #c75a00;
+  --talent-color: #3a81c3;
+  --system-color: #67bc45;
 
   --top-dogear-path: polygon( 10px 0, 100% 0, 100% 100%, 0 100%, 0 10px );
   --bottom-dogear-path: polygon( 0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100% );
@@ -53,12 +55,47 @@
 
 .lancer.sheet clipped-card,
 .lancer.sheet li {
+  display: block;
   background-color: rgba(0,0,0,0.07);
+  flex: 0 0 auto;
+
   margin: 3px 10px;
+  padding-bottom: 10px;
+
   text-align: center;
+
   clip-path: var(--double-dogear-path);
   -webkit-clip-path: var(--double-dogear-path);
-  display: block;
+}
+
+.lancer.sheet clipped-card > *,
+.lancer.sheet li > * {
+  margin: 5px;
+}
+
+.lancer.sheet clipped-header {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  font-size: 1.5em;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  font-weight: bold;
+
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+
+  color: white;
+  background-color: var(--main-theme-color, fuchsia);
+}
+
+.lancer.sheet clipped-header .cci,
+.lancer.sheet clipped-header .mdi,
+.lancer.sheet clipped-header .fas {
+  font-size: 30px;
+  margin: 2px;
 }
 /* ---------- */
 
@@ -73,7 +110,7 @@
 
 .lancer.sheet header:not(.window-header) {
   display: grid;
-  grid-template: 1.5fr 1fr 30px / 1fr 1fr 1.5fr 1fr 120px;
+  grid-template: 1.5fr 1fr auto / 1fr 1fr 1.5fr 1fr 120px;
   background-color: var(--main-theme-color, fuchsia);
   margin: 10px;
   color: white;
@@ -98,23 +135,29 @@
 
 .lancer.sheet .reaction,
 .lancer.sheet .tech,
+.lancer.sheet .trigger-header,
+.lancer.sheet .talent-header,
 .lancer.sheet .mount-header,
 .lancer.sheet .weapon-header,
-.lancer.sheet .trigger-header,
-.lancer.sheet .protocol-header {
-  color: white;
-  background-color: var(--main-theme-color, fuchsia);
+.lancer.sheet .protocol-header,
+.lancer.sheet .system-header,
+.lancer.sheet .trait-header {
+  /* type of clipped-header? */
+  display: block;
+  margin: 0;
+
   padding: 0 15px;
-  display: inline-block;
-  white-space: nowrap;
-  text-align: center;
-  max-height: 2.0em;
+  max-height: fit-content;
   min-height: 2.0em;
-  min-width: 100%;
-  grid-template-columns: 40px 1fr 40px;
   align-items: center;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  text-align: center;
+  white-space: nowrap;
+
+  color: white;
+  background-color: var(--main-theme-color, fuchsia);
 }
 
 .lancer.sheet .reaction {
@@ -146,6 +189,14 @@
 
 .lancer.sheet .protocol-header {
   background-color: var(--protocol-color);
+}
+
+.lancer.sheet .talent-header {
+  background-color: var(--talent-color);
+}
+
+.lancer.sheet .system-header {
+  background-color: var(--system-color);
 }
 
 .lancer.sheet .editor-content * {
@@ -382,16 +433,12 @@
 }
 
 /* TODO: Factor out */
-.lancer-mech-trait-header,
-.lancer-core-sys-header,
-.lancer-talent-header,
-.lancer-system-header,
-.lancer-trigger-header {
+.lancer-core-sys-header {
   color: white;
   background-color: var(--main-theme-color, fuchsia);
   padding-left: 15px;
   padding-right: 15px;
-  display: inline-block;
+  display: block;
   white-space: nowrap;
   text-align: center;
   max-height: 2.0em;
@@ -430,10 +477,6 @@
   margin: 3px;
 }
 
-.lancer-talent-header {
-  background-color: #3a81c3;
-}
-
 .lancer-talent-body {
   min-height: 15px;
   border-style: dashed;
@@ -448,12 +491,6 @@
   background-color: #3a81c333;
   clip-path: polygon( 0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100% );
   -webkit-clip-path: polygon( 0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100% );
-}
-
-.lancer-system-header {
-  clip-path: polygon( 0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 100% );
-  -webkit-clip-path: polygon( 0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 100% );
-  background-color: #67bc45;
 }
 
 .lancer-weapon-body {
@@ -499,8 +536,8 @@
   -webkit-clip-path: polygon( 0 0, calc(100% - 30px) 0, 100% 100%, 0 100% );
   background-color: #CCCCCC;
   grid-area: 3/1/4/5;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-flow: row wrap;
   padding-left: 5px;
   padding-right: 30px;
   align-items: center;
@@ -567,11 +604,9 @@
 }
 
 .lancer-title {
+  /* TODO: review if this rule can be simplified */
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin: 3px 10px;
   color: white;
   background-color: var(--main-theme-color, fuchsia);
 }
